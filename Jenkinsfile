@@ -118,7 +118,6 @@ pipeline
                 // Execute only wen failure
                 failure
                 {
-                    mail to: mark.benjamins@student.nhlstenden.com, subject: 'The Pipeline failed :('
                     mail to: "${mailAdres}", subject: 'The Pipeline failed :('
                     echo 'Dit is een melding voor de user als je dit leest werkt alles NIET succesvol'
                 }
