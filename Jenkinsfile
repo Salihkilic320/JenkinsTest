@@ -32,16 +32,6 @@ pipeline
          // Get the code from github
         stage('GetCodeFromGit') 
         {
-            checkout
-            (
-                [
-                    $class: 'GitSCM', branches: [[name: '*/master']], 
-                    doGenerateSubmoduleConfigurations: false, 
-                    extensions: [], 
-                    submoduleCfg: [], 
-                    userRemoteConfigs: [[credentialsId: 'github', url: "${githubLink}"]]
-                ]
-            )
             // Condition wen to run the specific code
             when
             {
