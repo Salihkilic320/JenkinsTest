@@ -80,7 +80,7 @@ pipeline
             echo 'De code is uitgevoerd en de test is klaar'
         }
         // Execut only wen succes
-        succes
+        success
         {
             echo 'Dit is een melding die je alleen krijgt als alles WEL succesvol is'
         }
