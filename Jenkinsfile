@@ -4,7 +4,7 @@ pipeline
     // Agent = Where to execute "any" 
     agent any 
     // Place to store your variable 
-    environmet
+    environment
     {
         NEW_VERSION = '1.0'
     }
