@@ -112,7 +112,6 @@ pipeline
                 // Execut only wen succes
                 success
                 {
-                    mail to: mark.benjamins@student.nhlstenden.com, subject: 'The Pipeline succes :)'
                     mail to: "${mailAdres}", subject: 'The Pipeline succes :)'
                     echo 'Dit is een melding voor de user als je dit leest werkt alles WEL succesvol'
                 }
