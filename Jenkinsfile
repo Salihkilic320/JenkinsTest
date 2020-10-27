@@ -1,5 +1,9 @@
+script
+{
 def githubLink 'https://github.com/Salihkilic320/JenkinsTest.git'
 def mailAdres 'mark.benjamins@student.nhlstenden.com'
+}
+
 // Pipline = Must be top-level
 pipeline 
 { 
