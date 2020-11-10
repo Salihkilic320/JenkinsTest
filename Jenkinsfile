@@ -9,35 +9,12 @@ pipeline
     {
         NEW_VERSION = '1.0'
     }
-    //Parameterize your Build
-    //parameters
-    //{
-        //string(name: 'VERSION', defaultValue: '', description: '')
-        //choice(name: 'VERSION', choice:  ['1.0', '1.1', '1.2'], description: '')
-        //booleanParam(name: 'executeTest', defaultValue: true, description: '')
-    //}
-    // Access build tools for your projects
-    //tools
-    //{
-        // maven 'Maven'
-        // gradle
-        // jdk
-    //}
     // Stage = Where the works happens
     stages 
     { 
          // Get the code from github
         stage('GetCodeFromGit') 
         {
-            // Condition wen to run the specific code
-            //when
-            //{
-                //expression
-                //{
-                    //params.executeTest == true
-                    //BRANCH_NAME == 'master' || CODE_CHANGE == true
-                //}
-            //}
             // Steps the code need to follow
             steps 
             {
@@ -50,11 +27,6 @@ pipeline
                 echo 'Get the code from git..'
                 // if je een ${} waarde echo doet gebruik dan altijd "" in plaats van ''
                 echo "The version is ${NEW_VERSION}"
-                // Goofy script code lijkt op js in HTML
-                //script
-                //{
-                    
-                //}
             }
         }
         // Checkout the code frome github     
@@ -62,8 +34,12 @@ pipeline
         {
             steps 
             {
-                // ToDo zoek op hoe je de code 
+                // ToDo zoek op hoe je de code taal checkt
                 echo 'Checking out the code..'
+                withMaven(maven : 'maven_3_5_0') 
+                {
+                    sh 'mvn clean compile'
+                }
             }
         }
         // Test het code frome github     
@@ -76,6 +52,10 @@ pipeline
                 * using `true` to allow the Pipeline to continue nonetheless
                 */
                 //sh 'make check || true' 
+                withMaven(maven : 'maven_3_5_0') 
+                {
+                    sh 'mvn test'
+                }
             }
         }
         // Build the code
@@ -85,6 +65,10 @@ pipeline
             {
                 echo 'Building the code..'
                 //sh 'make'
+                maven(maven : 'maven_3_5_0') 
+                {
+                    sh 'mvn deploy'
+                }
             }
         }
         // Test by using the Unit test
@@ -107,13 +91,11 @@ pipeline
                 success
                 {
                     echo 'Dit is een melding voor de user als je dit leest werkt alles WEL succesvol'
-                    mail bcc: '', body: '', cc: '', from: '', replyTo: '', subject: 'jenkins gedoe', to: 'mark.benjamins@student.nhlstenden.com'
                 }
                 // Execute only wen failure
                 failure
                 {
                     echo 'Dit is een melding voor de user als je dit leest werkt alles NIET succesvol'
-                    mail bcc: '', body: '', cc: '', from: '', replyTo: '', subject: 'jenkins gedoe', to: 'mark.benjamins@student.nhlstenden.com'
                 }
             }
         }
