@@ -107,13 +107,13 @@ pipeline
                 success
                 {
                     echo 'Dit is een melding voor de user als je dit leest werkt alles WEL succesvol'
-                    mail bcc: '', body: '', cc: '', from: '', replyTo: '', subject: 'jenkins gedoe', to: 'mark.benjamins@student.nlhstenden.com'
+                    mail bcc: '', body: '', cc: '', from: '', replyTo: '', subject: 'jenkins gedoe', to: 'mark.benjamins@student.nhlstenden.com'
                 }
                 // Execute only wen failure
                 failure
                 {
                     echo 'Dit is een melding voor de user als je dit leest werkt alles NIET succesvol'
-                    mail bcc: '', body: '', cc: '', from: '', replyTo: '', subject: 'jenkins gedoe', to: 'mark.benjamins@student.nlhstenden.com'
+                    mail bcc: '', body: '', cc: '', from: '', replyTo: '', subject: 'jenkins gedoe', to: 'mark.benjamins@student.nhlstenden.com'
                 }
             }
         }
