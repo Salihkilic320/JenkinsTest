@@ -36,7 +36,7 @@ pipeline
                     doGenerateSubmoduleConfigurations: false, 
                     extensions: [], 
                     submoduleCfg: [], 
-                    userRemoteConfigs: [[credentialsId: 'github', url: "${githubLink}"]]
+                    userRemoteConfigs: [[credentialsId: 'github', url: "${'https://github.com/Salihkilic320/JenkinsTest.git'}"]]
                 ]
             )
             // Condition wen to run the specific code
