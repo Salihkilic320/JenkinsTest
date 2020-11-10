@@ -29,12 +29,7 @@ pipeline
          // Get the code from github
         stage('GetCodeFromGit') 
         {
-            checkout([ $class: 'GitSCM', branches: [[name: '*/master']], 
-                    doGenerateSubmoduleConfigurations: false, 
-                    extensions: [], 
-                    submoduleCfg: [], 
-                    userRemoteConfigs: [[credentialsId: 'github', 
-                    url: 'https://github.com/Salihkilic320/JenkinsTest.git']]])
+           
             // Condition wen to run the specific code
             when
             {
@@ -47,6 +42,13 @@ pipeline
             // Steps the code need to follow
             steps 
             {
+                 checkout([ $class: 'GitSCM', branches: [[name: '*/master']], 
+                    doGenerateSubmoduleConfigurations: false, 
+                    extensions: [], 
+                    submoduleCfg: [], 
+                    userRemoteConfigs: [[credentialsId: 'github', 
+                    url: 'https://github.com/Salihkilic320/JenkinsTest.git']]])
+               
                 echo 'Get the code from git..'
                 // if je een ${} waarde echo doet gebruik dan altijd "" in plaats van ''
                 echo "The version is ${NEW_VERSION}"
