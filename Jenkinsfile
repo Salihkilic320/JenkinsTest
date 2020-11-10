@@ -1,11 +1,13 @@
 #!/usr/bin/env groovy
-node {
+node
+{
     withEnv(["LT_USERNAME=Your LambdaTest UserName",
     "LT_ACCESS_KEY=Your LambdaTest Access Key",
-    "LT_TUNNEL=true"]){
+    "LT_TUNNEL=true"])
+    {
     echo env.LT_USERNAME
     echo env.LT_ACCESS_KEY 
-    
+    }
    stage('setup') { 
    
       // Get some code from a GitHub repository
@@ -29,4 +31,4 @@ node {
       // Installing Dependencies
       sh 'npm install'
     }
-    }
+}
