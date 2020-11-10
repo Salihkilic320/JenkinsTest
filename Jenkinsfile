@@ -36,10 +36,6 @@ pipeline
             {
                 // ToDo zoek op hoe je de code taal checkt
                 echo 'Checking out the code..'
-                maven(maven : 'maven_3_5_0') 
-                {
-                    sh 'mvn clean compile'
-                }
             }
         }
         // Test het code frome github     
@@ -52,10 +48,6 @@ pipeline
                 * using `true` to allow the Pipeline to continue nonetheless
                 */
                 //sh 'make check || true' 
-                maven(maven : 'maven_3_5_0') 
-                {
-                    sh 'mvn test'
-                }
             }
         }
         // Build the code
@@ -64,11 +56,8 @@ pipeline
             steps 
             {
                 echo 'Building the code..'
-                //sh 'make'
-                maven(maven : 'maven_3_5_0') 
-                {
-                    sh 'mvn deploy'
-                }
+                sh 'npm install'
+                
             }
         }
         // Test by using the Unit test
