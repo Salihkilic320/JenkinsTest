@@ -29,16 +29,12 @@ pipeline
          // Get the code from github
         stage('GetCodeFromGit') 
         {
-            checkout
-            (
-                [
-                    $class: 'GitSCM', branches: [[name: '*/master']], 
+            checkout([ $class: 'GitSCM', branches: [[name: '*/master']], 
                     doGenerateSubmoduleConfigurations: false, 
                     extensions: [], 
                     submoduleCfg: [], 
-                    userRemoteConfigs: [[credentialsId: 'github', url: "${'https://github.com/Salihkilic320/JenkinsTest.git'}"]]
-                ]
-            )
+                    userRemoteConfigs: [[credentialsId: 'github', 
+                    url: 'https://github.com/Salihkilic320/JenkinsTest.git']]])
             // Condition wen to run the specific code
             when
             {
