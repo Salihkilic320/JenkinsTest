@@ -36,7 +36,7 @@ pipeline
             {
                 // ToDo zoek op hoe je de code taal checkt
                 echo 'Checking out the code..'
-                maven(version : 'maven_3_5_0') 
+                maven(maven : 'maven_3_5_0') 
                 {
                     sh 'mvn clean compile'
                 }
@@ -52,7 +52,7 @@ pipeline
                 * using `true` to allow the Pipeline to continue nonetheless
                 */
                 //sh 'make check || true' 
-                withMaven(maven : 'maven_3_5_0') 
+                maven(maven : 'maven_3_5_0') 
                 {
                     sh 'mvn test'
                 }
