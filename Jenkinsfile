@@ -17,12 +17,12 @@ pipeline
         //booleanParam(name: 'executeTest', defaultValue: true, description: '')
     //}
     // Access build tools for your projects
-    tools
-    {
+    //tools
+    //{
         // maven 'Maven'
         // gradle
         // jdk
-    }
+    //}
     // Stage = Where the works happens
     stages 
     { 
