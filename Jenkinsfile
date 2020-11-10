@@ -10,12 +10,12 @@ pipeline
         NEW_VERSION = '1.0'
     }
     //Parameterize your Build
-    parameters
-    {
+    //parameters
+    //{
         //string(name: 'VERSION', defaultValue: '', description: '')
         //choice(name: 'VERSION', choice:  ['1.0', '1.1', '1.2'], description: '')
         //booleanParam(name: 'executeTest', defaultValue: true, description: '')
-    }
+    //}
     // Access build tools for your projects
     tools
     {
@@ -29,34 +29,32 @@ pipeline
          // Get the code from github
         stage('GetCodeFromGit') 
         {
-           
             // Condition wen to run the specific code
-            when
-            {
-                expression
-                {
+            //when
+            //{
+                //expression
+                //{
                     //params.executeTest == true
                     //BRANCH_NAME == 'master' || CODE_CHANGE == true
-                }
-            }
+                //}
+            //}
             // Steps the code need to follow
             steps 
             {
-                 checkout([ $class: 'GitSCM', branches: [[name: '*/master']], 
+                checkout([ $class: 'GitSCM', branches: [[name: '*/master']], 
                     doGenerateSubmoduleConfigurations: false, 
                     extensions: [], 
                     submoduleCfg: [], 
                     userRemoteConfigs: [[credentialsId: 'github', 
                     url: 'https://github.com/Salihkilic320/JenkinsTest.git']]])
-               
                 echo 'Get the code from git..'
                 // if je een ${} waarde echo doet gebruik dan altijd "" in plaats van ''
                 echo "The version is ${NEW_VERSION}"
                 // Goofy script code lijkt op js in HTML
-                script
-                {
+                //script
+                //{
                     
-                }
+                //}
             }
         }
         // Checkout the code frome github     
