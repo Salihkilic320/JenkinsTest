@@ -1,5 +1,4 @@
 //def githubLink 'https://github.com/Salihkilic320/JenkinsTest.git'
-//def mailAdres 'mark.benjamins@student.nhlstenden.com'
 // Pipline = Must be top-level
 pipeline 
 { 
@@ -110,15 +109,11 @@ pipeline
                 // Execut only wen succes
                 success
                 {
-                    mail to: mark.benjamins@student.nhlstenden.com, subject: 'The Pipeline succes :)'
-                    mail to: "${mailAdres}", subject: 'The Pipeline succes :)'
                     echo 'Dit is een melding voor de user als je dit leest werkt alles WEL succesvol'
                 }
                 // Execute only wen failure
                 failure
                 {
-                    mail to: mark.benjamins@student.nhlstenden.com, subject: 'The Pipeline failed :('
-                    mail to: "${mailAdres}", subject: 'The Pipeline failed :('
                     echo 'Dit is een melding voor de user als je dit leest werkt alles NIET succesvol'
                 }
             }
