@@ -39,7 +39,7 @@ pipeline
 // https://github.com/coralogix-resources/java-rest-api-calculator/tree/master/src/main
         stage('Build')
         {
-            step{
+            steps{
                 git 'https://github.com/Salihkilic320/JenkinsTest.git'
                 //sh '/mvnw clean compile'
                 bat '.\\mvnw clean compolie'
