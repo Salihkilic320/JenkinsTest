@@ -24,13 +24,7 @@ pipeline
                 echo 'Get the code from git..'
                 // if je een ${} waarde echo doet gebruik dan altijd "" in plaats van ''
                 echo "The version is ${NEW_VERSION}"
-                // Goofy script code lijkt op js in HTML
-                //script
-                //{
-                    
-                //}
             }
-
         }
 
 // https://opsmatters.com/videos/6-how-run-junit-tests-java-project-jenkins
@@ -39,7 +33,9 @@ pipeline
 // https://github.com/coralogix-resources/java-rest-api-calculator/tree/master/src/main
         stage('Build')
         {
-            step{
+            steps
+            {
+                echo 'Build the code..
                 git 'https://github.com/Salihkilic320/JenkinsTest.git'
                 //sh '/mvnw clean compile'
                 bat '.\\mvnw clean compolie'
