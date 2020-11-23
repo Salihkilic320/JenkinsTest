@@ -41,8 +41,8 @@ pipeline
         {
             steps{
                 git 'https://github.com/Salihkilic320/JenkinsTest.git'
-                //sh '/mvnw clean compile'
-                bat '.\\mvnw clean compolie'
+                sh '/mvnw clean compile'
+                //bat '.\\mvnw clean compolie'
             }
         }
         // Test by using the Unit test
@@ -54,8 +54,8 @@ pipeline
                 // the file to use the unit test
                 //junit '**/target/*.xml'
 
-                //sh './mvnw test'
-                bat '.\\mvnw test'
+                sh './mvnw test'
+                //bat '.\\mvnw test'
             }
             post
             {
