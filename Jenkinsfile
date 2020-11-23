@@ -42,23 +42,23 @@ pipeline
             }
         }
         // Notify user
-        stage('NotifyUser') 
-        {
-            steps 
-            {
-                echo 'Notify the user...'
+        //stage('NotifyUser') 
+        //{
+            //steps 
+            //{
+                //echo 'Notify the user...'
                 // Execut only wen succes
-                success
-                {
-                    echo 'Dit is een melding voor de user als je dit leest werkt alles WEL succesvol'
-                }
+                //success
+                //{
+                    //echo 'Dit is een melding voor de user als je dit leest werkt alles WEL succesvol'
+                //}
                 // Execute only wen failure
-                failure
-                {
-                    echo 'Dit is een melding voor de user als je dit leest werkt alles NIET succesvol'
-                }
-            }
-        }
+                //failure
+                //{
+                    //echo 'Dit is een melding voor de user als je dit leest werkt alles NIET succesvol'
+                //}
+            //}
+        //}
     }
     // After the code ends execute this code
     post
