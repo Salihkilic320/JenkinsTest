@@ -80,7 +80,6 @@ class DepotTest {
         assertTrue(this.henk.getPackages().size() > 0);
     }
 
-
     @Test
     void getExtraDeliverers_false()
     {
@@ -123,7 +122,6 @@ class DepotTest {
                 assertTrue(packageNumberWithDeliverer.containsKey(packageLoop.getPackageNumber()) && packageNumberWithDeliverer.containsValue(deliverer.getDelivererName()));
             }
         }
-
         assertEquals(packageNumberWithDeliverer.size(), 17);
     }
 }

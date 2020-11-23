@@ -30,17 +30,43 @@ pipeline
                     
                 //}
             }
+
+        }
+
+// https://opsmatters.com/videos/6-how-run-junit-tests-java-project-jenkins
+// https://youtu.be/muQmkzNL7B0
+// https://gist.github.com/coralogix-resources/6aa50dc8d697adbdcb56b57c90ece3aa
+// https://github.com/coralogix-resources/java-rest-api-calculator/tree/master/src/main
+        stage('Build')
+        {
+            step{
+                git 'https://github.com/Salihkilic320/JenkinsTest.git'
+                //sh '/mvnw clean compile'
+                bat '.\\mvnw clean compolie'
+            }
         }
         // Test by using the Unit test
-        stage('UnitTest') 
+        stage('UnitTest')
         {
-            steps 
+            steps
             {
                 echo 'UnitTesting...'
                 // the file to use the unit test
-                //junit '**/target/*.xml' 
+                //junit '**/target/*.xml'
+
+                //sh './mvnw test'
+                bat '.\\mvnw test'
+            }
+            post
+            {
+                always
+                {
+                    junit'*'
+                }
             }
         }
+///////////////////////////////////
+
         // Notify user
         //stage('NotifyUser') 
         //{
