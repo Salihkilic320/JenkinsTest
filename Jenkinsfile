@@ -37,14 +37,14 @@ pipeline
 // https://youtu.be/muQmkzNL7B0
 // https://gist.github.com/coralogix-resources/6aa50dc8d697adbdcb56b57c90ece3aa
 // https://github.com/coralogix-resources/java-rest-api-calculator/tree/master/src/main
-        //stage('Build')
-        //{
-            //steps{
-                //git 'https://github.com/Salihkilic320/JenkinsTest.git'
+        stage('Build')
+        {
+            steps{
+                git 'https://github.com/Salihkilic320/JenkinsTest.git'
                 //sh '/mvnw clean compile'
-                //bat '.\\mvn clean compolie'
-            //}
-        //}
+                bat 'mvn clean compile'
+            }
+        }
         // Test by using the Unit test
         stage('UnitTest')
         {
@@ -55,7 +55,7 @@ pipeline
                 //junit '**/target/*.xml'
 
                 //sh './mvnw test'
-                bat '.\\mvn test'
+                bat 'mvn test'
             }
             post
             {
