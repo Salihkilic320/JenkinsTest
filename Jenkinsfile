@@ -44,7 +44,7 @@ pipeline
                 echo 'Build the code..'
                 git 'https://github.com/Salihkilic320/JenkinsTest.git'
                 //sh './mvnw clean compile'
-                bat mvn clean
+                bat 'mvn clean compile'
             }
         }
         // Test by using the Unit test
