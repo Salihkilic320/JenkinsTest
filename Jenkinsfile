@@ -35,10 +35,10 @@ pipeline
         {
             steps
             {
-                echo 'Build the code..
+                echo 'Build the code..'
                 git 'https://github.com/Salihkilic320/JenkinsTest.git'
-                //sh '/mvnw clean compile'
-                bat '.\\mvnw clean compolie'
+                //sh './mvnw clean compile'
+                bat '.\\mvnw clean compile'
             }
         }
         // Test by using the Unit test
