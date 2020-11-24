@@ -12,7 +12,7 @@ pipeline
     // Try to make the recured information int a variable 
     parameters
     {
-        string(name: 'GIT', defaultValue: 'https://github.com/Salihkilic320/JenkinsTest.git' description: 'Link to gtihub repository')
+        string(name: 'GIT', defaultValue: 'https://github.com/Salihkilic320/JenkinsTest.git', description: 'Link to gtihub repository')
     }
 
     // Stage = Where the works happens
