@@ -102,8 +102,11 @@ pipeline
         success
         {
             echo 'Dit is een melding die je alleen krijgt als alles WEL succesvol is'
-             emailext body: 'job has been succesful', subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", 
-               recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']]
+             emailext body: ''' 
+             <p>Check console output at &QUOT;<a href='${BUILD_URL}consoleText'>${JOB_NAME} [${BUILD_NUMBER}]</a>&QUOT;</p>
+             ${BUILD_LOG_REGEX, regex="^.*?*****.*?$", linesBefore=0, linesAfter=999, maxMatches=10, showTruncatedLines=false,escapeHtml=false}''',
+             subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", 
+             recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']]
         }
         // Execute only wen failure
         failure
