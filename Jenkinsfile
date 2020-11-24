@@ -9,7 +9,7 @@ pipeline
         NEW_VERSION = '1.0'
     }
 
-    // Try to make the recured information int a variable 
+    // Make the github link into a parameter
     parameters
     {
         string(name: 'GIT', defaultValue: 'https://github.com/Salihkilic320/JenkinsTest.git', description: 'Link to gtihub repository')
@@ -49,7 +49,6 @@ pipeline
             {
                 echo 'Build the code..'
                 git "${params.GIT}"
-                //sh './mvnw clean compile'
                 bat 'mvnw clean compile'
             }
         }
@@ -62,8 +61,6 @@ pipeline
                 echo 'UnitTesting...'
                 // the file to use the unit test
                 junit '**/test/.java'
-
-                //sh './mvnw test'
                 bat 'mvnw test'
             }
             //post
@@ -81,17 +78,16 @@ pipeline
     post
     {
         // Execute always
-        // Example message to the user
         always
         {
             echo 'De code is uitgevoerd en de test is klaar'
         }
 
-        // Execut only wen succes
+        // Execut only when succes
         success
         {
             echo 'Dit is een melding die je alleen krijgt als alles WEL succesvol is'
-            
+
             emailext(
                     subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", 
                     body: '''<p><font size="8" color="green">Build Succesfull!</font></p>
@@ -100,7 +96,7 @@ pipeline
                     )
         }
 
-        // Execute only wen failure
+        // Execute only when failure
         failure
         {
             echo 'Dit is een melding die je alleen krijgt als alles NIET succesvol is'
