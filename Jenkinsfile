@@ -54,18 +54,18 @@ pipeline
             {
                 echo 'UnitTesting...'
                 // the file to use the unit test
-                junit '**/target/*.xml'
+                junit 'test'
 
                 //sh './mvnw test'
                 bat 'mvnw test'
             }
-            post
-            {
-                always
-                {
-                    junit '**/target/surefire-reports/TEST-*.xml'
-                }
-            }
+            //post
+            //{
+                //always
+                //{
+                    //junit '**/target/surefire-reports/TEST-*.xml'
+                //}
+            //}
         }
 ///////////////////////////////////
 
