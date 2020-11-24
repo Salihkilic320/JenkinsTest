@@ -96,19 +96,21 @@ pipeline
         always
         {
             echo 'De code is uitgevoerd en de test is klaar'
-            emailext body: 'hallo', subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", 
-               recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']]
-                    
+                             
         }
         // Execut only wen succes
         success
         {
             echo 'Dit is een melding die je alleen krijgt als alles WEL succesvol is'
+             emailext body: 'job has been succesful', subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", 
+               recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']]
         }
         // Execute only wen failure
         failure
         {
             echo 'Dit is een melding die je alleen krijgt als alles NIET succesvol is'
+             emailext body: 'job has failed', subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", 
+               recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']]
         }
     }
 }
