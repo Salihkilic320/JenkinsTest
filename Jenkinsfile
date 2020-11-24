@@ -54,7 +54,7 @@ pipeline
             {
                 echo 'UnitTesting...'
                 // the file to use the unit test
-                junit 'test'
+                junit '**/test/.java'
 
                 //sh './mvnw test'
                 bat 'mvnw test'
