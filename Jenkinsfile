@@ -96,7 +96,7 @@ pipeline
         always
         {
             echo 'De code is uitgevoerd en de test is klaar'
-           emailext subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+           emailext body: 'hallo', subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", recipientProviders: [[$class: 'DevelopersRecipientProvider']]
                     
         }
         // Execut only wen succes
