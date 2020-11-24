@@ -96,7 +96,7 @@ pipeline
         always
         {
             echo 'De code is uitgevoerd en de test is klaar'
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'salih.kilic@student.nhlstenden.com'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+            emailext body: 'A Test EMail', subject: 'Test', to: 'salih.kilic@student.nhlstenden.com'
         }
         // Execut only wen succes
         success
