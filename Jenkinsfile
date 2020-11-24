@@ -1,12 +1,20 @@
 pipeline 
 { 
     // Agent = Where to execute "any" 
-    agent any 
+    agent any
+
     // Place to store your variable 
     environment
     {
         NEW_VERSION = '1.0'
     }
+
+    // Try to make the recured information int a variable 
+    parameters
+    {
+        string(name: 'GIT', defaultValue: 'https://github.com/Salihkilic320/JenkinsTest.git' description: 'Link to gtihub repository')
+    }
+
     // Stage = Where the works happens
     stages 
     { 
@@ -21,7 +29,7 @@ pipeline
                         extensions: [], 
                         submoduleCfg: [], 
                         userRemoteConfigs: [[credentialsId: 'github', 
-                        url: 'https://github.com/Salihkilic320/JenkinsTest.git']]]
+                        url: "${params.GIT}"]]]
                         )
                 
                 echo 'Get the code from git..'
@@ -40,7 +48,7 @@ pipeline
             steps
             {
                 echo 'Build the code..'
-                git 'https://github.com/Salihkilic320/JenkinsTest.git'
+                git "${params.GIT}"
                 //sh './mvnw clean compile'
                 bat 'mvnw clean compile'
             }
