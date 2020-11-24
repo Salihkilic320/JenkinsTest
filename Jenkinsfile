@@ -15,22 +15,20 @@ pipeline
         {
             steps 
             {
-                checkout([ $class: 'GitSCM', branches: [[name: '*/master']], 
-                    doGenerateSubmoduleConfigurations: false, 
-                    extensions: [], 
-                    submoduleCfg: [], 
-                    userRemoteConfigs: [[credentialsId: 'github', 
-                    url: 'https://github.com/Salihkilic320/JenkinsTest.git']]])
+                checkout(
+                        [ $class: 'GitSCM', branches: [[name: '*/master']], 
+                        doGenerateSubmoduleConfigurations: false, 
+                        extensions: [], 
+                        submoduleCfg: [], 
+                        userRemoteConfigs: [[credentialsId: 'github', 
+                        url: 'https://github.com/Salihkilic320/JenkinsTest.git']]]
+                        )
+                
                 echo 'Get the code from git..'
+            
                 // if je een ${} waarde echo doet gebruik dan altijd "" in plaats van ''
                 echo "The version is ${NEW_VERSION}"
-                // Goofy script code lijkt op js in HTML
-                //script
-                //{
-                    
-                //}
             }
-
         }
 
 // https://opsmatters.com/videos/6-how-run-junit-tests-java-project-jenkins
@@ -47,6 +45,7 @@ pipeline
                 bat 'mvnw clean compile'
             }
         }
+
         // Test by using the Unit test
         stage('UnitTest')
         {
@@ -67,27 +66,9 @@ pipeline
                 //}
             //}
         }
+    }
 ///////////////////////////////////
 
-        // Notify user
-        //stage('NotifyUser') 
-        //{
-            //steps 
-            //{
-                //echo 'Notify the user...'
-                // Execut only wen succes
-                //success
-                //{
-                    //echo 'Dit is een melding voor de user als je dit leest werkt alles WEL succesvol'
-                //}
-                // Execute only wen failure
-                //failure
-                //{
-                    //echo 'Dit is een melding voor de user als je dit leest werkt alles NIET succesvol'
-                //}
-            //}
-        //}
-    }
     // After the code ends execute this code
     post
     {
@@ -96,31 +77,32 @@ pipeline
         always
         {
             echo 'De code is uitgevoerd en de test is klaar'
-                             
         }
+
         // Execut only wen succes
         success
         {
             echo 'Dit is een melding die je alleen krijgt als alles WEL succesvol is'
             
-             emailext (
-                 subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", 
-                 body: '''<p><font size="8" color="green">Build Succesfull!</font></p>
-              <p>Check console output at &QUOT;<a href='${BUILD_URL}consoleText'>${JOB_NAME} [${BUILD_NUMBER}]</a>&QUOT;</p>''',
-              recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']])
-            
-            
+            emailext(
+                    subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", 
+                    body: '''<p><font size="8" color="green">Build Succesfull!</font></p>
+                    <p>Check console output at &QUOT;<a href='${BUILD_URL}consoleText'>${JOB_NAME} [${BUILD_NUMBER}]</a>&QUOT;</p>''',
+                    recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']]
+                    )
         }
+
         // Execute only wen failure
         failure
         {
             echo 'Dit is een melding die je alleen krijgt als alles NIET succesvol is'
-               emailext (
-                 subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", 
-                 body: '''<p><font size="8" color="red">Build Failure!</font></p>
-              <p>Check console output at &QUOT;<a href='${BUILD_URL}consoleText'>${JOB_NAME} [${BUILD_NUMBER}]</a>&QUOT;</p>''',
-              recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']])
-            
+
+            emailext(
+                    subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", 
+                    body: '''<p><font size="8" color="red">Build Failure!</font></p>
+                    <p>Check console output at &QUOT;<a href='${BUILD_URL}consoleText'>${JOB_NAME} [${BUILD_NUMBER}]</a>&QUOT;</p>''',
+                    recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']]
+                    )
         }
     }
 }
