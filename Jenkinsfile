@@ -105,11 +105,9 @@ pipeline
             
              emailext (
                  subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", 
-                 body: '''<p><font size="8" color="red">Build Failure!</font></p>
+                 body: '''<p><font size="8" color="green">Build Succesfull!</font></p>
               <p>Check console output at &QUOT;<a href='${BUILD_URL}consoleText'>${JOB_NAME} [${BUILD_NUMBER}]</a>&QUOT;</p>''',
-                 
-             
-             recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']])
+              recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']])
             
             
         }
@@ -117,8 +115,12 @@ pipeline
         failure
         {
             echo 'Dit is een melding die je alleen krijgt als alles NIET succesvol is'
-             emailext body: 'job has failed', subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", 
-               recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']]
+               emailext (
+                 subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", 
+                 body: '''<p><font size="8" color="red">Build Failure!</font></p>
+              <p>Check console output at &QUOT;<a href='${BUILD_URL}consoleText'>${JOB_NAME} [${BUILD_NUMBER}]</a>&QUOT;</p>''',
+              recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']])
+            
         }
     }
 }
