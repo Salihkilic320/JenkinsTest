@@ -96,6 +96,7 @@ pipeline
         always
         {
             echo 'De code is uitgevoerd en de test is klaar'
+            junit '**/target/surefire-reports/TEST-*.xml'
         }
         // Execut only wen succes
         success
