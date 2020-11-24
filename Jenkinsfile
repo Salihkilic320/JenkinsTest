@@ -48,25 +48,25 @@ pipeline
             }
         }
         // Test by using the Unit test
-        //stage('UnitTest')
-        //{
-            //steps
-            //{
-                //echo 'UnitTesting...'
+        stage('UnitTest')
+        {
+            steps
+            {
+                echo 'UnitTesting...'
                 // the file to use the unit test
-                //junit '**/target/*.xml'
+                junit '**/target/*.xml'
 
                 //sh './mvnw test'
-                //bat 'mvnw test'
-            //}
-            //post
-            //{
-                //always
-                //{
-                    //junit '**/target/surefire-reports/TEST-*.xml'
-                //}
-            //}
-        //}
+                bat 'mvnw test'
+            }
+            post
+            {
+                always
+                {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                }
+            }
+        }
 ///////////////////////////////////
 
         // Notify user
