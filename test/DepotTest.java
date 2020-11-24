@@ -26,19 +26,19 @@ class DepotTest {
         this.depot = new Depot(1, "Depot");
 
         // Add packages to the depot
-        this.depot.addPackage(new Package(1, 50000, "Henk", "Jumbo", PackageType.Europe));
-        this.depot.addPackage(new Package(2, 40000, "Thomas", "Bol", PackageType.Europe));
-        this.depot.addPackage(new Package(3, 50000, "Mark", "Mediamarkt", PackageType.Europe));
-        this.depot.addPackage(new Package(4, 4000, "Tom", "Praxis", PackageType.Europe));
-        this.depot.addPackage(new Package(5, 10000, "Harrie", "Thomas", PackageType.Europe));
-        this.depot.addPackage(new Package(6, 20000, "Henk", "Bol", PackageType.Europe));
-        this.depot.addPackage(new Package(7, 100000, "Henk", "Mediamarkt", PackageType.Europe));
-        this.depot.addPackage(new Package(8, 8000, "Henk", "BCC", PackageType.Europe));
-        this.depot.addPackage(new Package(9, 200000, "Thomas", "Bol", PackageType.Europe));
-        this.depot.addPackage(new Package(10, 20000, "Henk", "Bol", PackageType.Europe));
-        this.depot.addPackage(new Package(11, 100000, "Henk", "Mediamarkt", PackageType.Europe));
-        this.depot.addPackage(new Package(12, 8000, "Henk", "BCC", PackageType.Europe));
-        this.depot.addPackage(new Package(13, 200000, "Thomas", "Bol", PackageType.Europe));
+        this.depot.addPackage(new Package(1, 50000, "Henk", "Jumbo"));
+        this.depot.addPackage(new Package(2, 40000, "Thomas", "Bol"));
+        this.depot.addPackage(new Package(3, 50000, "Mark", "Mediamarkt"));
+        this.depot.addPackage(new Package(4, 4000, "Tom", "Praxis"));
+        this.depot.addPackage(new Package(5, 10000, "Harrie", "Thomas"));
+        this.depot.addPackage(new Package(6, 20000, "Henk", "Bol"));
+        this.depot.addPackage(new Package(7, 100000, "Henk", "Mediamarkt"));
+        this.depot.addPackage(new Package(8, 8000, "Henk", "BCC"));
+        this.depot.addPackage(new Package(9, 200000, "Thomas", "Bol"));
+        this.depot.addPackage(new Package(10, 20000, "Henk", "Bol"));
+        this.depot.addPackage(new Package(11, 100000, "Henk", "Mediamarkt"));
+        this.depot.addPackage(new Package(12, 8000, "Henk", "BCC"));
+        this.depot.addPackage(new Package(13, 200000, "Thomas", "Bol"));
 
         // Add letters to the depot
         this.depot.addPackage(new Letter(14, "Henk", "Henk"));
@@ -79,6 +79,7 @@ class DepotTest {
         assertTrue(this.tom.getPackages().size() > 0);
         assertTrue(this.henk.getPackages().size() > 0);
     }
+
 
     @Test
     void getExtraDeliverers_false()
@@ -122,6 +123,7 @@ class DepotTest {
                 assertTrue(packageNumberWithDeliverer.containsKey(packageLoop.getPackageNumber()) && packageNumberWithDeliverer.containsValue(deliverer.getDelivererName()));
             }
         }
+
         assertEquals(packageNumberWithDeliverer.size(), 17);
     }
 }

@@ -106,7 +106,7 @@ public class Depot
                 Package currentPackage = it.next();
                 // if the weight of a remainingweight of the deliverer is higher than te weight of the package
                 // it will be added to the deliverer and removed from the depot.
-                if(deliverer.getRemainingWeight() > currentPackage.getWeight() && currentPackage.getPackageType() == PackageType.National)
+                if(deliverer.getRemainingWeight() > currentPackage.getWeight())
                 {
                     deliverer.addPackage(currentPackage);
                     it.remove();

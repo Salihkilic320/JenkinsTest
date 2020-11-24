@@ -7,7 +7,6 @@ public class Package
     private double weight;
     private String sender;
     private String receiver;
-    private PackageType packageType;
 
     /**
      *
@@ -16,13 +15,12 @@ public class Package
      * @param sender The sender of the package.
      * @param receiver The receiver of the package.
      */
-    public Package(int packageNumber, double weight, String sender, String receiver, PackageType packageType)
+    public Package(int packageNumber, double weight, String sender, String receiver)
     {
         this.packageNumber = packageNumber;
         this.weight = weight;
         this.sender = sender;
         this.receiver = receiver;
-        this.packageType = packageType;
     }
 
     public int getPackageNumber()
@@ -63,15 +61,5 @@ public class Package
     public void setReceiver(String receiver)
     {
         this.receiver = receiver;
-    }
-
-    public PackageType getPackageType()
-    {
-        return packageType;
-    }
-
-    public void setPackageType(PackageType packageType)
-    {
-        this.packageType = packageType;
     }
 }

@@ -19,9 +19,9 @@ class DelivererTest
     {
         // construct deliverers
         this.thomas = new Deliverer(1, "Thomas", 60);
-        this.thomas.addPackage(new Package(1, 50000, "Henk", "Jumbo", PackageType.Europe));
-        this.thomas.addPackage(new Package(2, 40000, "Thomas", "Bol", PackageType.Europe));
-        this.thomas.addPackage(new Package(3, 50000, "Mark", "Mediamarkt", PackageType.Europe));
+        this.thomas.addPackage(new Package(1, 50000, "Henk", "Jumbo"));
+        this.thomas.addPackage(new Package(2, 40000, "Thomas", "Bol"));
+        this.thomas.addPackage(new Package(3, 50000, "Mark", "Mediamarkt"));
         this.packages = new HashSet<>();
     }
 
