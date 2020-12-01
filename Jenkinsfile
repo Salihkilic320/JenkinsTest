@@ -49,7 +49,7 @@ pipeline
             {
                 echo 'Build the code..'
                 git "${params.GIT}"
-                bat 'mvnw clean compile'
+                bat 'mvn clean compile'
             }
         }
 
@@ -61,7 +61,7 @@ pipeline
                 echo 'UnitTesting...'
                 // the file to use the unit test
                 junit '**/test/.java'
-                bat 'mvnw test'
+                bat 'mvn test'
             }
             //post
             //{
