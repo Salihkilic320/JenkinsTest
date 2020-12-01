@@ -6,7 +6,7 @@ pipeline
     // Place to store your variable 
     environment
     {
-        NEW_VERSION = '1.0'
+        NEW_VERSION = '1.1'
     }
 
     // Make the github link into a parameter
