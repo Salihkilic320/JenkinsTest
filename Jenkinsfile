@@ -60,7 +60,8 @@ pipeline
             {
                 echo 'UnitTesting...'
                 // the file to use the unit test
-                //junit '**/test/.java'
+                junit '**/test/DelivererTest.java'
+                junit '**/test/DepotTest.java'
                 bat 'mvn test'
             }
             //post
