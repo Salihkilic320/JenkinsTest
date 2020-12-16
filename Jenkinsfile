@@ -38,11 +38,8 @@ pipeline
                 echo "The version is ${NEW_VERSION}"
             }
         }
-
-// https://opsmatters.com/videos/6-how-run-junit-tests-java-project-jenkins
-// https://youtu.be/muQmkzNL7B0
-// https://gist.github.com/coralogix-resources/6aa50dc8d697adbdcb56b57c90ece3aa
-// https://github.com/coralogix-resources/java-rest-api-calculator/tree/master/src/main
+        
+        // Builds the application
         stage('Build')
         {
             steps
@@ -63,17 +60,9 @@ pipeline
                 bat 'mvn test'
                 
             }
-            //post
-            //{
-                //always
-                //{
-                    //junit '**/target/surefire-reports/TEST-*.xml'
-                //}
-            //}
         }
     }
-///////////////////////////////////
-
+    
     // After the code ends execute this code
     post
     {
@@ -87,7 +76,7 @@ pipeline
         success
         {
             echo 'Dit is een melding die je alleen krijgt als alles WEL succesvol is'
-
+            // Sends mail if run is succesfull
             emailext(
                     subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", 
                     body: '''<p><font size="8" color="green">Build Succesfull!</font></p>
@@ -100,7 +89,8 @@ pipeline
         failure
         {
             echo 'Dit is een melding die je alleen krijgt als alles NIET succesvol is'
-
+            
+            // Sends mail if run is unsucessfull
             emailext(
                     subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", 
                     body: '''<p><font size="8" color="red">Build Failure!</font></p>
