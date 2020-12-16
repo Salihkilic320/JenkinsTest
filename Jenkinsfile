@@ -58,7 +58,6 @@ pipeline
                 echo 'UnitTesting...'
                 // the file to use the unit test
                 bat 'mvn test'
-                
             }
         }
     }
